@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  blazor-facilebudget:
+    container_name: blazor-facilebudget
+    build: .
+    restart: always
+    volumes:
+      - /docker/facilebudget/data:/app
+    ports:
+      - 5091:5001
+    networks:
+      - lan-network
+
+networks:
+  lan-network:
+    external:
+      name: docker-net
