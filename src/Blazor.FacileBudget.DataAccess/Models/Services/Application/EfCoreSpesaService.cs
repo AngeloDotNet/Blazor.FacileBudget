@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Blazor.FacileBudget.DataAccess.Models.Services.Application
@@ -66,6 +67,54 @@ namespace Blazor.FacileBudget.DataAccess.Models.Services.Application
             {
                 logger.LogError("Si è verificato un errore, aggiornato il transaction logger");
                 await transactionLogger.LogTransactionAsync(inputModel);
+            }
+        }
+
+        public async Task<List<SpesaViewModel>> ExtractSpese(SpeseExtractInputModel inputModel)
+        {
+            IQueryable<Spesa> baseQuery = dbContext.Spese;
+
+            IQueryable<Spesa> queryLinq = baseQuery
+                .Where(spesa => spesa.Mese.Contains(inputModel.Mese) && spesa.Anno.Contains(inputModel.Anno))
+                .AsNoTracking();
+
+            List<SpesaViewModel> spese = await queryLinq
+                .Select(spesa => spesa.ToSpesaViewModel())
+                .ToListAsync();
+
+            return spese;
+        }
+
+        public async Task<bool> IsSpeseAvailableAsync(SpeseExtractInputModel inputModel)
+        {
+            bool speseExists = await dbContext.Spese.AnyAsync(spesa => EF.Functions.Like(spesa.Mese, inputModel.Mese) && spesa.Anno == inputModel.Anno);
+            return speseExists;
+        }
+
+        public async Task<StringBuilder> CreateExcel(SpeseExtractInputModel inputModel)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var check = await IsSpeseAvailableAsync(inputModel);
+
+            if (check == true)
+            {
+                var spese = await ExtractSpese(inputModel);
+
+                sb.AppendLine("Descrizione" + ";" + "Importo");
+
+                foreach (var item in spese)
+                {
+                    sb.AppendLine(item.Descrizione.ToString() + ";" + item.Importo.ToString().Replace(".", ","));
+                }
+
+                return sb;
+            }
+            else
+            {
+                sb.AppendLine("Descrizione" + ";" + "Importo");
+
+                return sb;
             }
         }
     }
