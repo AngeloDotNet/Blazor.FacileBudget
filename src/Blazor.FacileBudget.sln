@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FacileBudget.Server", "Blazor.FacileBudget\Server\Blazor.FacileBudget.Server.csproj", "{E29D7270-4928-4A89-8AE5-B582D9AB10A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Server", "Blazor.FacileBudget\Server\Blazor.FacileBudget.Server.csproj", "{E29D7270-4928-4A89-8AE5-B582D9AB10A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FacileBudget.Client", "Blazor.FacileBudget\Client\Blazor.FacileBudget.Client.csproj", "{1EB6F55C-B064-4699-A032-3F3131800E06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Client", "Blazor.FacileBudget\Client\Blazor.FacileBudget.Client.csproj", "{1EB6F55C-B064-4699-A032-3F3131800E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FacileBudget.Shared", "Blazor.FacileBudget\Shared\Blazor.FacileBudget.Shared.csproj", "{B2CE54B9-D126-4CD2-B9FE-00B9253135A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Shared", "Blazor.FacileBudget\Shared\Blazor.FacileBudget.Shared.csproj", "{B2CE54B9-D126-4CD2-B9FE-00B9253135A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FacileBudget.Validation", "Blazor.FacileBudget.Validation\Blazor.FacileBudget.Validation.csproj", "{971BD46A-C383-4790-8130-3CCA8461F64C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Validation", "Blazor.FacileBudget.Validation\Blazor.FacileBudget.Validation.csproj", "{971BD46A-C383-4790-8130-3CCA8461F64C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FacileBudget.Models", "Blazor.FacileBudget.Models\Blazor.FacileBudget.Models.csproj", "{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Models", "Blazor.FacileBudget.Models\Blazor.FacileBudget.Models.csproj", "{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FacileBudget.DataAccess", "Blazor.FacileBudget.DataAccess\Blazor.FacileBudget.DataAccess.csproj", "{E4A9C564-E0CE-46BD-9B62-9A0196978C15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4A9C564-E0CE-46BD-9B62-9A0196978C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A9C564-E0CE-46BD-9B62-9A0196978C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A9C564-E0CE-46BD-9B62-9A0196978C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A9C564-E0CE-46BD-9B62-9A0196978C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
