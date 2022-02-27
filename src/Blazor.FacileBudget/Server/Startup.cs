@@ -1,5 +1,6 @@
 using Blazor.FacileBudget.DataAccess.Models.Services.Application;
 using Blazor.FacileBudget.DataAccess.Models.Services.Infrastructure;
+using Blazor.FacileBudget.Server.Models.Services.Infrastructure;
 using Blazor.FacileBudget.Validation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -72,6 +73,8 @@ namespace Blazor.FacileBudget.Server
             });
 
             services.AddTransient<ISpesaService, EfCoreSpesaService>();
+
+            services.AddSingleton<ITransactionLogger, LocalTransactionLogger>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
