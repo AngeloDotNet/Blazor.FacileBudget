@@ -1,7 +1,9 @@
+using Blazor.FacileBudget.DataAccess.Models.Services.Infrastructure;
 using Blazor.FacileBudget.Validation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,11 +22,18 @@ namespace Blazor.FacileBudget.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()
-                .AddFluentValidation(option => {
+                .AddFluentValidation(option =>
+                {
                     option.RegisterValidatorsFromAssemblyContaining<SpeseCreateValidator>();
                 });
 
             services.AddRazorPages();
+
+            services.AddDbContextPool<FacileBudgetDbContext>(optionsBuilder =>
+            {
+                string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
+                optionsBuilder.UseSqlite(connectionString);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
