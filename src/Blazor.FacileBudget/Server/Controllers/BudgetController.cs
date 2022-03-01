@@ -33,27 +33,20 @@ namespace Blazor.FacileBudget.Server.Controllers
             return NoContent();
         }
 
-        [HttpPost("EstraiSpese")]
-        public async Task<IActionResult> ExtractSpeseAsync(SpeseExtractInputModel inputModel)
+        [HttpGet("EstraiSpese")]
+        public async Task<IActionResult> ExtractSpeseAsync([FromQuery] SpeseExtractInputModel periodo)
         {
-            var spese = await spesaService.ExtractSpese(inputModel);
+            var spese = await spesaService.ExtractSpese(periodo);
             return Ok(spese);
         }
 
-        [HttpPost("VerificaSpese")]
-        public async Task<bool> CheckSpeseAsync(SpeseExtractInputModel inputModel)
+        [HttpGet("GeneraExcel")]
+        public async Task<FileResult> GenerateExcel([FromQuery] SpeseExtractInputModel periodo)
         {
-            bool result = await spesaService.IsSpeseAvailableAsync(inputModel);
-            return result;
-        }
+            string SelMese = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(periodo.Mese)).ToString();
+            string FileName = "Report_" + SelMese + "_" + periodo.Anno.ToString() + ".csv";
 
-        [HttpPost("GeneraExcel")]
-        public async Task<FileResult> GenerateExcel(SpeseExtractInputModel inputModel)
-        {
-            string SelMese = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(inputModel.Mese)).ToString();
-            string FileName = "Report_" + SelMese + "_" + inputModel.Anno.ToString() + ".csv";
-
-            StringBuilder sb = await spesaService.CreateExcel(inputModel);
+            StringBuilder sb = await spesaService.CreateExcel(periodo);
 
             return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", FileName);
         }

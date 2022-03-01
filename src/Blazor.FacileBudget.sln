@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Validat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Models", "Blazor.FacileBudget.Models\Blazor.FacileBudget.Models.csproj", "{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FacileBudget.DataAccess", "Blazor.FacileBudget.DataAccess\Blazor.FacileBudget.DataAccess.csproj", "{E4A9C564-E0CE-46BD-9B62-9A0196978C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.DataAccess", "Blazor.FacileBudget.DataAccess\Blazor.FacileBudget.DataAccess.csproj", "{E4A9C564-E0CE-46BD-9B62-9A0196978C15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
