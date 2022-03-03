@@ -11,7 +11,7 @@ The project was created using the Visual Studio 2022 GUI and the **additional in
 ```
 ●-- Blazor.FacileBudget.Server
 |
-●-- Blazor.FacileBudget.Client
+●-- Blazor.FacileBudget.Client (WIP)
 |
 ●-- Blazor.FacileBudget.Shared
 ```

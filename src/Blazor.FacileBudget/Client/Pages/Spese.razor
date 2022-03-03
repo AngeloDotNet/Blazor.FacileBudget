@@ -1,6 +1,4 @@
 ﻿@page "/spese"
-@using Blazor.FacileBudget.Models.InputModels
-@using Blazor.FacileBudget.Models.ViewModels
 @inject ISpesaService spesaService
 @inject NavigationManager navigationManager
 
@@ -49,7 +47,29 @@
     List<SpesaViewModel> ListaMesePrev1 = new();
     List<SpesaViewModel> ListaMesePrev2 = new();
 
+    private bool hasError = false;
+    private bool isLoading = true;
+
     protected override async Task OnInitializedAsync()
+    {
+        isLoading = true;
+        await Task.Delay(3000);
+
+        try
+        {
+            await CheckingData();
+        }
+        catch (Exception)
+        {
+            hasError = true;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task CheckingData()
     {
         ListaMeseNow = await spesaService.Extract(MeseNow);
         ListaMesePrev1 = await spesaService.Extract(mesePrev1);
