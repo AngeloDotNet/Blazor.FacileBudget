@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Client"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Shared", "Blazor.FacileBudget\Shared\Blazor.FacileBudget.Shared.csproj", "{B2CE54B9-D126-4CD2-B9FE-00B9253135A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Validation", "Blazor.FacileBudget.Validation\Blazor.FacileBudget.Validation.csproj", "{971BD46A-C383-4790-8130-3CCA8461F64C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.Models", "Blazor.FacileBudget.Models\Blazor.FacileBudget.Models.csproj", "{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FacileBudget.DataAccess", "Blazor.FacileBudget.DataAccess\Blazor.FacileBudget.DataAccess.csproj", "{E4A9C564-E0CE-46BD-9B62-9A0196978C15}"
@@ -33,10 +31,6 @@ Global
 		{B2CE54B9-D126-4CD2-B9FE-00B9253135A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2CE54B9-D126-4CD2-B9FE-00B9253135A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2CE54B9-D126-4CD2-B9FE-00B9253135A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{971BD46A-C383-4790-8130-3CCA8461F64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{971BD46A-C383-4790-8130-3CCA8461F64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{971BD46A-C383-4790-8130-3CCA8461F64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{971BD46A-C383-4790-8130-3CCA8461F64C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0ECC75-64ED-4778-AB67-F80ED7532E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU

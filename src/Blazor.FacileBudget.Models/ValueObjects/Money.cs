@@ -5,7 +5,7 @@ namespace Blazor.FacileBudget.Models.ValueObjects
 {
     public class Money
     {
-        public Money() : this(Currency.EUR, 0.00m)
+        public Money() : this(Currency.EURO, 0.00m)
         {
         }
         public Money(Currency currency, decimal amount)

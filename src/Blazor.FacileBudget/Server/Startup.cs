@@ -1,8 +1,6 @@
 using Blazor.FacileBudget.DataAccess.Models.Services.Application;
 using Blazor.FacileBudget.DataAccess.Models.Services.Infrastructure;
 using Blazor.FacileBudget.Server.Models.Services.Infrastructure;
-using Blazor.FacileBudget.Validation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,12 +22,7 @@ namespace Blazor.FacileBudget.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddFluentValidation(option =>
-                {
-                    option.RegisterValidatorsFromAssemblyContaining<SpeseCreateValidator>();
-                });
-
+            services.AddControllersWithViews();
             services.AddRazorPages();
 
             services.AddCors(options =>
