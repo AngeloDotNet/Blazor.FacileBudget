@@ -22,8 +22,6 @@ The project was created using the Visual Studio 2022 GUI and the **additional in
 ●-- Blazor.FacileBudget.DataAccess
 |
 ●-- Blazor.FacileBudget.Models
-|
-●-- Blazor.FacileBudget.Validation
 ```
 
 ## Scaffolding Database
