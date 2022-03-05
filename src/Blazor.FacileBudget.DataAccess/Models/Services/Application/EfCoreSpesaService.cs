@@ -105,7 +105,8 @@ namespace Blazor.FacileBudget.DataAccess.Models.Services.Application
 
                 foreach (var item in spese)
                 {
-                    sb.AppendLine(item.Descrizione.ToString() + ";" + item.Importo.ToString().Replace(".", ","));
+                    string importo = item.Importo.Amount.ToString();
+                    sb.AppendLine(item.Descrizione.ToString() + ";" + importo.Replace(".", ","));
                 }
 
                 return sb;
