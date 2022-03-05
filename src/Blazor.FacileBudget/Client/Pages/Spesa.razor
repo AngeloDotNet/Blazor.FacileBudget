@@ -1,0 +1,44 @@
+﻿@page "/spesa"
+@inject ISpesaService spesaService
+@inject NavigationManager navigationManager
+
+<h3>Nuova spesa</h3>
+
+<EditForm Model="spesa" OnValidSubmit="Create">
+    <div class="row">
+        <div class="col-12"><DataAnnotationsValidator />
+        <ValidationSummary /></div>
+    </div>
+    <SpesaComponent spesa=@spesa></SpesaComponent>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-outline-primary btn-lg ml-3">Aggiungi</button>
+            <button type="button" @onclick="@Cancel" class="btn btn-outline-secondary btn-lg ml-3">Annulla</button>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    SpeseCreateInputModel spesa = new();
+
+    public void Cancel()
+    {
+        navigationManager.NavigateTo("/spese");
+    }
+
+    private async Task Create()
+    {
+        string NuovoImporto = spesa.Importo_Amount.Replace(".", ",");
+
+        SpeseCreateInputModel NuovaSpesa = new()
+        {
+            Descrizione = spesa.Descrizione,
+            Importo_Amount = spesa.Importo_Amount,
+            Importo_Currency = spesa.Importo_Currency,
+            Importo = new Money(Enum.Parse<Currency>(Convert.ToString(spesa.Importo_Currency)), Convert.ToDecimal(NuovoImporto, new CultureInfo("it-IT")))
+        };
+
+        await spesaService.Create(NuovaSpesa);
+        navigationManager.NavigateTo("/spese");
+    }
+}

@@ -25,9 +25,9 @@ namespace Blazor.FacileBudget.Client.Models.Services.Application
             Spese = await httpClient.GetFromJsonAsync<List<SpesaViewModel>>("api/Budget/ListaSpese");
         }
 
-        public async Task Create()
+        public async Task Create(SpeseCreateInputModel inputModel)
         {
-            await httpClient.PostAsJsonAsync<SpeseCreateInputModel>("api/Budget/CreaSpesa", Spesa);
+            await httpClient.PostAsJsonAsync<SpeseCreateInputModel>("api/Budget/CreaSpesa", inputModel);
         }
 
         public async Task<List<SpesaViewModel>> Extract(SpeseExtractInputModel inputModel)
