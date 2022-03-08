@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -25,9 +26,18 @@ namespace Blazor.FacileBudget.Client.Models.Services.Application
             Spese = await httpClient.GetFromJsonAsync<List<SpesaViewModel>>("api/Budget/ListaSpese");
         }
 
-        public async Task Create(SpeseCreateInputModel inputModel)
+        public async Task<bool> Create(SpeseCreateInputModel inputModel)
         {
-            await httpClient.PostAsJsonAsync<SpeseCreateInputModel>("api/Budget/CreaSpesa", inputModel);
+            var bres = await httpClient.PostAsJsonAsync<SpeseCreateInputModel>("api/Budget/CreaSpesa", inputModel);
+            
+            if (bres.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public async Task<List<SpesaViewModel>> Extract(SpeseExtractInputModel inputModel)

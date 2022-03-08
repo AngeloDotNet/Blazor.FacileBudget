@@ -29,8 +29,15 @@ namespace Blazor.FacileBudget.Server.Controllers
         [HttpPost("CreaSpesa")]
         public async Task<IActionResult> CreateSpesaAsync(SpeseCreateInputModel inputModel)
         {
-            await spesaService.CreateSpesa(inputModel);
-            return NoContent();
+            try 
+            {
+                await spesaService.CreateSpesa(inputModel);
+                return Ok();
+            }
+            catch(Exception ex)
+            { 
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("EstraiSpese")]
