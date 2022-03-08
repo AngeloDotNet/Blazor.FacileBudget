@@ -24,6 +24,14 @@ The project was created using the Visual Studio 2022 GUI and the **additional in
 ●-- Blazor.FacileBudget.Models
 ```
 
+### Additional Packages
+
+```
+●-- BlazorKit.Spinners
+|
+●-- MudBlazor
+```
+
 ## Scaffolding Database
 
 To perform the scaffolding it is necessary to open the package management console and use the command: **Add-Migration Initial-Migration**
