@@ -8,7 +8,7 @@ namespace Blazor.FacileBudget.Client.Models.Services.Application
     public interface ISpesaService
     {
         Task GetAllData();
-        Task Create(SpeseCreateInputModel inputModel);
+        Task<bool> Create(SpeseCreateInputModel inputModel);
         Task<List<SpesaViewModel>> Extract(SpeseExtractInputModel inputModel);
     }
 }
