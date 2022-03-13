@@ -17,20 +17,20 @@ namespace Blazor.FacileBudget.Client.Models.Services.Application
             this.httpClient = httpClient;
         }
 
-        public List<SpesaViewModel> Spese { get; set; }
+        public List<SpesaViewModel> spese { get; set; }
+        public SpesaViewModel spesa { get; set; }
 
-        public SpeseCreateInputModel Spesa { get; set; }
-
-        public async Task GetAllData()
+        public async Task<List<SpesaViewModel>> GetAllData()
         {
-            Spese = await httpClient.GetFromJsonAsync<List<SpesaViewModel>>("api/Budget/ListaSpese");
+            spese = await httpClient.GetFromJsonAsync<List<SpesaViewModel>>("api/Budget/ListaSpese");
+            return spese;
         }
 
         public async Task<bool> Create(SpeseCreateInputModel inputModel)
         {
-            var bres = await httpClient.PostAsJsonAsync<SpeseCreateInputModel>("api/Budget/CreaSpesa", inputModel);
+            var bRes = await httpClient.PostAsJsonAsync<SpeseCreateInputModel>("api/Budget/CreaSpesa", inputModel);
             
-            if (bres.StatusCode == HttpStatusCode.OK)
+            if (bRes.StatusCode == HttpStatusCode.OK)
             {
                 return true;
             }
@@ -42,8 +42,34 @@ namespace Blazor.FacileBudget.Client.Models.Services.Application
 
         public async Task<List<SpesaViewModel>> Extract(SpeseExtractInputModel inputModel)
         {
-            Spese = await httpClient.GetFromJsonAsync<List<SpesaViewModel>>($"api/Budget/EstraiSpese/?Mese={inputModel.Mese}&Anno={inputModel.Anno}");
-            return Spese;
+            spese = await httpClient.GetFromJsonAsync<List<SpesaViewModel>>($"api/Budget/EstraiSpese/?Mese={inputModel.Mese}&Anno={inputModel.Anno}");
+            return spese;
+        }
+
+        public async Task<string> GetTotalSpese(SpeseExtractInputModel inputModel)
+        {
+            string totale = await httpClient.GetStringAsync($"api/Budget/TotaleSpese/?Mese={inputModel.Mese}&Anno={inputModel.Anno}");
+            return totale;
+        }
+
+        public async Task<SpesaViewModel> GetSpesa(int SpesaId)
+        {
+            spesa = await httpClient.GetFromJsonAsync<SpesaViewModel>($"api/Budget/DettaglioSpesa/{SpesaId}");
+            return spesa;
+        }
+
+        public async Task<bool> DeleteSpesa(int SpesaId)
+        {
+            var bRes = await httpClient.DeleteAsync($"api/Budget/CancellaSpesa/{spesa.SpesaId}");
+
+            if (bRes.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
