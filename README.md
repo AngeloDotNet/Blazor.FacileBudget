@@ -1,5 +1,7 @@
 # Blazor FacileBudget
 
+Second version of the application designed for family budget management, developed with .NET 5 technology, Blazor WebAssembly, Entity Framework Core, SQLite database and distributable via docker
+
 ## Project creation
 
 The project was created using the Visual Studio 2022 GUI and the **additional information** was configured as follows
