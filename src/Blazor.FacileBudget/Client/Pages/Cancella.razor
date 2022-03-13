@@ -1,0 +1,33 @@
+﻿@page "/cancella/{SpesaId:int}"
+@inject ISpesaService spesaService
+@inject NavigationManager navigationManager
+@inject ISnackbar Snackbar
+
+@code {
+
+	[Parameter] public int SpesaId { get; set; }
+
+	SpesaViewModel spesa = new();
+
+	protected async override Task OnParametersSetAsync()
+	{
+		spesa = await spesaService.GetSpesa(SpesaId);
+
+		if (spesa != null)
+		{
+			bool result = await spesaService.DeleteSpesa(SpesaId);
+
+			if (result == true)
+			{
+				Snackbar.Add("Spesa cancellata con successo !", Severity.Success);
+            
+				await Task.Delay(5000);
+				navigationManager.NavigateTo("/spese");
+			}
+			else
+			{
+				Snackbar.Add("Spesa non cancellata, riprovare !", Severity.Error);
+			}
+		}
+	}
+}
