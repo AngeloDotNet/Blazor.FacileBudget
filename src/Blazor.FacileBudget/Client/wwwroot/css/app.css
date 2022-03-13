@@ -27,7 +27,13 @@ a, .btn-link {
 }
 
 .validation-message {
-    color: red;
+    color: darkred;
+    border-left: 3px solid red;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: rgba(255, 0, 0, 0.05);
+    margin-bottom: 2px;
 }
 
 #blazor-error-ui {
@@ -42,9 +48,9 @@ a, .btn-link {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
