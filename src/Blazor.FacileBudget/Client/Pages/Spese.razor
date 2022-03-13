@@ -87,7 +87,7 @@
 
     private int[] pageSizeOptions = new int[] { 5, 10, 15 };
 
-    private int rowsPerPage = 15; //Questo valore deve essere presente anche in pageSizeOptions così da poter permettere di tornare al valore dopo un eventuale cambiamento.
+    private int rowsPerPage = 10; //Questo valore deve essere presente anche in pageSizeOptions così da poter permettere di tornare al valore dopo un eventuale cambiamento.
 
     private bool hideRowsPerPage;
     private bool hidePageNumber;
@@ -105,7 +105,8 @@
         {
             await CheckingData();
 
-            if (spese.Count <= 10)
+            //if (spese.Count <= 10)
+            if (spese.Count <= rowsPerPage)
             {
                 hideRowsPerPage = true;
                 hidePageNumber = true;
