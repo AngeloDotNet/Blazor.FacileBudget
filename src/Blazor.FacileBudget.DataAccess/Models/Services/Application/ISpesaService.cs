@@ -13,5 +13,8 @@ namespace Blazor.FacileBudget.DataAccess.Models.Services.Application
         Task<List<SpesaViewModel>> ExtractSpese(SpeseExtractInputModel inputModel);
         Task<bool> IsSpeseAvailableAsync(SpeseExtractInputModel inputModel);
         Task<StringBuilder> CreateExcel(SpeseExtractInputModel inputModel);
+        decimal SumSpese(SpeseExtractInputModel inputModel);
+        Task<SpesaViewModel> GetSpesa(int spesaId);
+        Task DeleteSpesa(int spesaId);
     }
 }

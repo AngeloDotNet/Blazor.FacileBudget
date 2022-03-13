@@ -118,5 +118,39 @@ namespace Blazor.FacileBudget.DataAccess.Models.Services.Application
                 return sb;
             }
         }
+
+        public decimal SumSpese(SpeseExtractInputModel inputModel)
+        {
+            var spese = dbContext.Spese
+                .Where(spesa => spesa.Mese.Contains(inputModel.Mese) && spesa.Anno.Contains(inputModel.Anno))
+                .Sum(spesa => spesa.Importo.Amount);
+
+            return spese;
+        }
+
+        public async Task<SpesaViewModel> GetSpesa(int spesaId)
+        {
+            IQueryable<SpesaViewModel> queryLinq = dbContext.Spese
+                .AsNoTracking()
+                .Where(spesa => spesa.SpesaId == spesaId)
+                .Select(spesa => spesa.ToSpesaViewModel());
+
+            SpesaViewModel viewModel = await queryLinq.FirstOrDefaultAsync();
+
+            return viewModel;
+        }
+
+        public async Task DeleteSpesa(int spesaId)
+        {
+            var spesa = await dbContext.Spese.FindAsync(spesaId);
+
+            if (spesa == null)
+            {
+                return;
+            }
+
+            dbContext.Spese.Remove(spesa);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

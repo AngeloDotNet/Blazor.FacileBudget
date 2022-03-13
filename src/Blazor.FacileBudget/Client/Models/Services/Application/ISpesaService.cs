@@ -7,8 +7,11 @@ namespace Blazor.FacileBudget.Client.Models.Services.Application
 {
     public interface ISpesaService
     {
-        Task GetAllData();
+        Task<List<SpesaViewModel>> GetAllData();
         Task<bool> Create(SpeseCreateInputModel inputModel);
         Task<List<SpesaViewModel>> Extract(SpeseExtractInputModel inputModel);
+        Task<string> GetTotalSpese(SpeseExtractInputModel inputModel);
+        Task<SpesaViewModel> GetSpesa(int SpesaId);
+        Task<bool> DeleteSpesa(int SpesaId);
     }
 }

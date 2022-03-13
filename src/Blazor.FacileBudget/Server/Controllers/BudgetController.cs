@@ -1,5 +1,6 @@
 ﻿using Blazor.FacileBudget.DataAccess.Models.Services.Application;
 using Blazor.FacileBudget.Models.InputModels;
+using Blazor.FacileBudget.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Globalization;
@@ -47,6 +48,13 @@ namespace Blazor.FacileBudget.Server.Controllers
             return Ok(spese);
         }
 
+        [HttpGet("TotaleSpese")]
+        public decimal GetTotaleSpeseAsync([FromQuery] SpeseExtractInputModel periodo)
+        {
+            var spese = spesaService.SumSpese(periodo);
+            return spese;
+        }
+
         [HttpGet("GeneraExcel")]
         public async Task<FileResult> GenerateExcel([FromQuery] SpeseExtractInputModel periodo)
         {
@@ -56,6 +64,34 @@ namespace Blazor.FacileBudget.Server.Controllers
             StringBuilder sb = await spesaService.CreateExcel(periodo);
 
             return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", FileName);
+        }
+
+        [HttpGet("DettaglioSpesa/{spesaId}")]
+        public async Task<IActionResult> GetSpesaAsync(int spesaId)
+        {
+            try
+            {
+                SpesaViewModel spesa = await spesaService.GetSpesa(spesaId);
+                return Ok(spesa);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("CancellaSpesa/{spesaId}")]
+        public async Task<IActionResult> DeleteSpesa(int spesaId)
+        {
+            try
+            {
+                await spesaService.DeleteSpesa(spesaId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
