@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 
-namespace Blazor.FacileBudget.Client.Components
+namespace Blazor.FacileBudget.Components
 {
     public partial class SpeseComponent : ComponentBase
     {

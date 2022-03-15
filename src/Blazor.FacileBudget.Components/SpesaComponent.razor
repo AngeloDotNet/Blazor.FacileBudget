@@ -2,14 +2,14 @@
     <div class="col-md-5">
         <div class="form-group">
             <label id="Descrizione" class="control-label">Descrizione</label>
-            <InputText id="Descrizione" class="form-control form-control-lg" @bind-Value="spesa.Descrizione" placeholder="Descrizione"></InputText>
+            <InputText id="Descrizione" class="form-control form-control-lg" @bind-Value="Spesa.Descrizione" placeholder="Descrizione"></InputText>
         </div>
     </div>
     <div class="col-md-3">
         <div class="form-group">
             <label id="Importo" class="control-label">Importo</label>
             <div class="input-group">
-                <InputSelect @bind-Value="spesa.Importo_Currency" class="form-control form-control-lg">
+                <InputSelect @bind-Value="Spesa.Importo_Currency" class="form-control form-control-lg">
                     <option value=""></option>
                     @foreach (Enum item in Enum.GetValues(typeof(Currency)))
                     { 
@@ -17,7 +17,7 @@
                     } 
                 </InputSelect>
                 @*<InputText type="number" step="any" @bind-Value="spesa.Importo_Amount" class="form-control form-control-lg" placeholder="Importo"></InputText>*@
-                <InputText @bind-Value="spesa.Importo_Amount" class="form-control form-control-lg" placeholder="Importo"></InputText>
+                <InputText @bind-Value="Spesa.Importo_Amount" class="form-control form-control-lg" placeholder="Importo"></InputText>
             </div>
         </div>
     </div>
