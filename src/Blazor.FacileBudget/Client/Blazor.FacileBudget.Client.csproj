@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Blazor.FacileBudget.Components\Blazor.FacileBudget.Components.csproj" />
     <ProjectReference Include="..\..\Blazor.FacileBudget.Models\Blazor.FacileBudget.Models.csproj" />
     <ProjectReference Include="..\Shared\Blazor.FacileBudget.Shared.csproj" />
   </ItemGroup>

@@ -1,11 +1,11 @@
 ﻿using Blazor.FacileBudget.Models.InputModels;
 using Microsoft.AspNetCore.Components;
 
-namespace Blazor.FacileBudget.Client.Components
+namespace Blazor.FacileBudget.Components
 {
     public partial class SpesaComponent : ComponentBase
     {
         [Parameter]
-        public SpeseCreateInputModel spesa { get; set; }
+        public SpeseCreateInputModel Spesa { get; set; }
     }
 }

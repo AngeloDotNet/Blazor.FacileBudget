@@ -10,7 +10,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlazorKit.Spinners" Version="0.7.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.15" />
+    <PackageReference Include="MudBlazor" Version="5.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blazor.FacileBudget.Models\Blazor.FacileBudget.Models.csproj" />
   </ItemGroup>
 
 </Project>
