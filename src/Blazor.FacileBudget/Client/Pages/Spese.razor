@@ -9,7 +9,8 @@
 <p><br /></p>
 
 @if (ListaMesePrev2.Count > 0)
-{    <button class="btn btn-outline-success" id="export-button" @onclick="@ReportMesePrev2"><i class="fas fa-file-download"></i> 
+{
+    <button class="btn btn-outline-success" id="export-button" @onclick="@ReportMesePrev2"><i class="fas fa-file-download"></i> 
         Esporta @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(mesePrev2.Mese)).ToString() @mesePrev2.Anno.ToString()</button>@:&nbsp;
 }
 
@@ -28,134 +29,4 @@
 <button class="btn btn-outline-primary" id="export-button" @onclick="@NuovaSpesa">Nuova Spesa</button>
 <p><br /></p>
 
-<SpinnerLoader IsLoading="isLoading" HasError="hasError" Size="46px" AccentColor="#3498db" Color="White" Center="true" Spinner="SpinnerTemplate.Loader7">
-    <ContentTemplate>
-        <MudTable Items="@spese" Hover="true" Breakpoint="Breakpoint.Sm" RowsPerPage="@rowsPerPage">
-            <HeaderContent>
-                <MudTh><MudTableSortLabel InitialDirection="SortDirection.Descending" SortBy="new Func<SpesaViewModel, object>(x=>x.SpesaId)"></MudTableSortLabel></MudTh>
-                <MudTh>Descrizione</MudTh>
-                <MudTh>Importo</MudTh>
-                <MudTh></MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTd DataLabel="Id">@context.SpesaId</MudTd>
-                <MudTd DataLabel="Descrizione">@context.Descrizione</MudTd>
-                <MudTd DataLabel="Importo">@context.Importo</MudTd>
-                <MudTd><a href="/Cancella/@context.SpesaId" class="btn btn-outline-danger">Cancella</a></MudTd>
-            </RowTemplate>
-            <PagerContent>
-                <MudTablePager PageSizeOptions="pageSizeOptions" HideRowsPerPage="hideRowsPerPage" HidePageNumber="hidePageNumber" HidePagination="hidePagination" />
-            </PagerContent>
-        </MudTable>
-    </ContentTemplate>
-    <ErrorContentTemplate>
-        <tr>
-            <td colspan="4">
-                <div class="alert alert-danger">Loading failed</div>
-            </td>
-        </tr>
-    </ErrorContentTemplate>
-</SpinnerLoader>
-
-@code {
-
-    private SpeseExtractInputModel MeseNow = new() 
-    { 
-        Mese = DateTime.Now.ToString("MM"), 
-        Anno = DateTime.Now.ToString("yyyy") 
-    };
-
-    private SpeseExtractInputModel mesePrev1 = new() 
-    { 
-        Mese = DateTime.Now.AddMonths(-1).ToString("MM"), 
-        Anno = DateTime.Now.AddMonths(-1).ToString("yyyy")
-    };
-
-    private SpeseExtractInputModel mesePrev2 = new() 
-    { 
-        Mese = DateTime.Now.AddMonths(-2).ToString("MM"), 
-        Anno = DateTime.Now.AddMonths(-2).ToString("yyyy")
-    };
-
-    List<SpesaViewModel> ListaMeseNow = new();
-    List<SpesaViewModel> ListaMesePrev1 = new();
-    List<SpesaViewModel> ListaMesePrev2 = new();
-
-    List<SpesaViewModel> spese = new();
-
-    private string TotaleSpese = string.Empty;
-
-    private int[] pageSizeOptions = new int[] { 5, 10, 15 };
-
-    private int rowsPerPage = 10; //Questo valore deve essere presente anche in pageSizeOptions così da poter permettere di tornare al valore dopo un eventuale cambiamento.
-
-    private bool hideRowsPerPage;
-    private bool hidePageNumber;
-    private bool hidePagination;
-
-    private bool hasError = false;
-    private bool isLoading = true;
-
-    protected override async Task OnInitializedAsync()
-    {
-        isLoading = true;
-        await Task.Delay(3000);
-
-        try
-        {
-            await CheckingData();
-
-            //if (spese.Count <= 10)
-            if (spese.Count <= rowsPerPage)
-            {
-                hideRowsPerPage = true;
-                hidePageNumber = true;
-                hidePagination = true;
-            }
-            else
-            {
-                hideRowsPerPage = true;
-                hidePageNumber = false;
-                hidePagination = false;
-            }
-        }
-        catch (Exception)
-        {
-            hasError = true;
-        }
-        finally
-        {
-            isLoading = false;
-        }
-    }
-
-    private async Task CheckingData()
-    {
-        spese = await spesaService.GetAllData();
-        TotaleSpese = await spesaService.GetTotalSpese(MeseNow);
-
-        ListaMeseNow = await spesaService.Extract(MeseNow);
-        ListaMesePrev1 = await spesaService.Extract(mesePrev1);
-        ListaMesePrev2 = await spesaService.Extract(mesePrev2);
-    }
-
-    public void NuovaSpesa()
-    {
-        navigationManager.NavigateTo("/spesa", false);
-    }
-
-    public void ReportMeseNow()
-    {
-        navigationManager.NavigateTo($"api/Budget/GeneraExcel/?Mese={MeseNow.Mese}&Anno={MeseNow.Anno}", true);
-    }
-
-    public void ReportMesePrev1()
-    {
-        navigationManager.NavigateTo($"api/Budget/GeneraExcel/?Mese={mesePrev1.Mese}&Anno={mesePrev1.Anno}", true);
-    }
-
-    public void ReportMesePrev2()
-    {
-        navigationManager.NavigateTo($"api/Budget/GeneraExcel/?Mese={mesePrev2.Mese}&Anno={mesePrev2.Anno}", true);
-    }
-}
+<SpeseComponent Spese="spese" RowsPerPage="rowsPerPage" PageSizeOptions="pageSizeOptions" IsLoading="isLoading" HasError="hasError" HideRowsPerPage="hideRowsPerPage" HidePageNumber="hidePageNumber" HidePagination="hidePagination"></SpeseComponent>
