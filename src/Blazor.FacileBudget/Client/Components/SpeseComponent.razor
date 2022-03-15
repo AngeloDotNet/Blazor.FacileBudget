@@ -1,0 +1,28 @@
+﻿<SpinnerLoader IsLoading="IsLoading" HasError="HasError" Size="46px" AccentColor="#3498db" Color="White" Center="true" Spinner="SpinnerTemplate.Loader7">
+    <ContentTemplate>
+        <MudTable Items="Spese" Hover="true" Breakpoint="Breakpoint.Sm" RowsPerPage="RowsPerPage">
+            <HeaderContent>
+                <MudTh><MudTableSortLabel InitialDirection="SortDirection.Descending" SortBy="new Func<SpesaViewModel, object>(x => x.SpesaId)"></MudTableSortLabel></MudTh>
+                <MudTh>Descrizione</MudTh>
+                <MudTh>Importo</MudTh>
+                <MudTh></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Id">@context.SpesaId</MudTd>
+                <MudTd DataLabel="Descrizione">@context.Descrizione</MudTd>
+                <MudTd DataLabel="Importo">@context.Importo</MudTd>
+                <MudTd><a href="/Cancella/@context.SpesaId" class="btn btn-outline-danger">Cancella</a></MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager PageSizeOptions="PageSizeOptions" HideRowsPerPage="HideRowsPerPage" HidePageNumber="HidePageNumber" HidePagination="HidePagination" />
+            </PagerContent>
+        </MudTable>
+    </ContentTemplate>
+    <ErrorContentTemplate>
+        <tr>
+            <td colspan="4">
+                <div class="alert alert-danger">Loading failed</div>
+            </td>
+        </tr>
+    </ErrorContentTemplate>
+</SpinnerLoader>
