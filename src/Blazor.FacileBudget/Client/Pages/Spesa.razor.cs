@@ -11,23 +11,23 @@ namespace Blazor.FacileBudget.Client.Pages
 {
     public partial class Spesa : ComponentBase
     {
-        SpeseCreateInputModel spesa = new();
+        SpeseCreateInputModel SpesaInputModel = new();
 
         public void Cancel()
         {
-            navigationManager.NavigateTo("/spese");
+            navigationManager.NavigateTo("/spese", false);
         }
 
         private async Task Create()
         {
-            string NuovoImporto = spesa.Importo_Amount.Replace(".", ",");
+            string NuovoImporto = SpesaInputModel.Importo_Amount.Replace(".", ",");
 
             SpeseCreateInputModel NuovaSpesa = new()
             {
-                Descrizione = spesa.Descrizione,
-                Importo_Amount = spesa.Importo_Amount,
-                Importo_Currency = spesa.Importo_Currency,
-                Importo = new Money(Enum.Parse<Currency>(Convert.ToString(spesa.Importo_Currency)), Convert.ToDecimal(NuovoImporto, new CultureInfo("it-IT")))
+                Descrizione = SpesaInputModel.Descrizione,
+                Importo_Amount = SpesaInputModel.Importo_Amount,
+                Importo_Currency = SpesaInputModel.Importo_Currency,
+                Importo = new Money(Enum.Parse<Currency>(Convert.ToString(SpesaInputModel.Importo_Currency)), Convert.ToDecimal(NuovoImporto, new CultureInfo("it-IT")))
             };
 
             bool result = await spesaService.Create(NuovaSpesa);
@@ -37,7 +37,7 @@ namespace Blazor.FacileBudget.Client.Pages
                 Snackbar.Add("Spesa inserita con successo !", Severity.Success);
 
                 await Task.Delay(5000);
-                navigationManager.NavigateTo("/spese");
+                navigationManager.NavigateTo("/spese", false);
             }
             else
             {
