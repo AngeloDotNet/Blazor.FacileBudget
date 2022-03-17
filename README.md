@@ -21,6 +21,8 @@ The project was created using the Visual Studio 2022 GUI and the **additional in
 ### Additional Libraries
 
 ```
+●-- Blazor.FacileBudget.Components
+|
 ●-- Blazor.FacileBudget.DataAccess
 |
 ●-- Blazor.FacileBudget.Models
