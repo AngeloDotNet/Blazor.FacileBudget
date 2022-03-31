@@ -61,3 +61,7 @@ If these files are omitted for some reason, the application will not be visible 
 ## Badges
 
 [![GitHub build and test](https://github.com/AngeloDotNet/Blazor.FacileBudget/actions/workflows/github_build_and_test.yml/badge.svg)](https://github.com/AngeloDotNet/Blazor.FacileBudget/actions/workflows/github_build_and_test.yml)
+
+## Statistics
+
+![Alt](https://repobeats.axiom.co/api/embed/e607ff1201a54a5c4131b3a8056dc0116b3fdaee.svg "Repobeats analytics image")
