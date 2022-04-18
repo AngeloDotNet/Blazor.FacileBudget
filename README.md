@@ -1,4 +1,3 @@
-
 # Blazor Facile Budget
 
 Second version of the application designed for family budget management, developed with .NET 6 technology and distributable via docker.
@@ -9,6 +8,8 @@ Second version of the application designed for family budget management, develop
 - No server required
 - Portable program
 - Cross platform
+
+
 ## Tech Stack
 
 **Client:** Blazor, Bootstrap 4.3
@@ -25,6 +26,8 @@ To perform the scaffolding it is necessary to open the package management consol
 Subsequently, to apply the newly created migration to the database it is necessary to use the command: **Update-Database**
 
 The scaffolding of the database must be performed from the Package Management Console, making sure that the default project (drop-down menu) is **Blazor.FacileBudget.DataAccess**
+
+
 ## Deployment
 
 After launching the publish command
@@ -38,6 +41,8 @@ but before publishing via docker, it is necessary to check the presence of the *
 If these are not present, it is possible to integrate them with a simple copy and paste from the Blazor project directory **Blazor.FacileBudget\Client\bin\Release\net6.0\wwwroot**
 
 If these files are omitted for some reason, the application will not be visible / available while browsing from the browser and the fixed message **loading...** will remain.
+
+
 ## Run Locally
 
 Clone the project
@@ -69,6 +74,7 @@ Start the server
 
 Contributions are always welcome!
 
+
 ## Badges
 
 [![GitHub build and test](https://github.com/AngeloDotNet/Blazor.FacileBudget/actions/workflows/github_build_and_test.yml/badge.svg)](https://github.com/AngeloDotNet/Blazor.FacileBudget/actions/workflows/github_build_and_test.yml)
@@ -82,3 +88,8 @@ Contributions are always welcome!
 ## License
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+
+
+## Statistics
+
+![Alt](https://repobeats.axiom.co/api/embed/e607ff1201a54a5c4131b3a8056dc0116b3fdaee.svg "Repobeats analytics image")
