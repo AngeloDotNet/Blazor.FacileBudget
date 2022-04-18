@@ -1,12 +1,7 @@
 using Blazor.FacileBudget.DataAccess.Models.Services.Application;
 using Blazor.FacileBudget.DataAccess.Models.Services.Infrastructure;
 using Blazor.FacileBudget.Server.Models.Services.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 namespace Blazor.FacileBudget.Server
@@ -70,8 +65,11 @@ namespace Blazor.FacileBudget.Server
             services.AddSingleton<ITransactionLogger, LocalTransactionLogger>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(WebApplication app)
         {
+            IWebHostEnvironment env = app.Environment;
+            IHostApplicationLifetime lifetime = app.Lifetime;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
