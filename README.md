@@ -1,6 +1,6 @@
 # Blazor FacileBudget
 
-Second version of the application designed for family budget management, developed with .NET 5 technology, Blazor WebAssembly, Entity Framework Core, SQLite database and distributable via docker
+Second version of the application designed for family budget management, developed with .NET 6 technology, Blazor WebAssembly, Entity Framework Core, SQLite database and distributable via docker
 
 ## Project creation
 
