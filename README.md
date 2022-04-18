@@ -21,6 +21,8 @@ The project was created using the Visual Studio 2022 GUI and the **additional in
 ### Additional Libraries
 
 ```
+●-- Blazor.FacileBudget.Components
+|
 ●-- Blazor.FacileBudget.DataAccess
 |
 ●-- Blazor.FacileBudget.Models
@@ -55,3 +57,7 @@ If these files are omitted for some reason, the application will not be visible 
 ## License
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+
+## Badges
+
+[![GitHub build and test](https://github.com/AngeloDotNet/Blazor.FacileBudget/actions/workflows/github_build_and_test.yml/badge.svg)](https://github.com/AngeloDotNet/Blazor.FacileBudget/actions/workflows/github_build_and_test.yml)
