@@ -3,7 +3,9 @@ version: '3.7'
 services:
   blazor-facilebudget:
     container_name: blazor-facilebudget
-    build: .
+    build:
+      context: .
+      dockerfile: app/Dockerfile
     restart: always
     volumes:
       - /docker/facilebudget/data:/app
@@ -11,6 +13,23 @@ services:
       - 5091:5001
     networks:
       - lan-network
+
+  server-seq:
+    container_name: server-seq
+    build:
+      context: .
+      dockerfile: logs/Dockerfile
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORDHASH="INDICARE-PASSWORD-16-CARATTERI-ALFANUMERICI"
+    volumes:
+     - /docker/seq/data:/data
+    networks:
+     - lan-network
+    ports:
+     - 5084:80
+     - 5341:5341
 
 networks:
   lan-network:
