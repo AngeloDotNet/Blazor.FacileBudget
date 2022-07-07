@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\Angelo\.nuget\packages\blazorkit.spinners\0.7.16\contentFiles\any\net6.0\wwwroot\keyframes.css" />
+    <Content Remove="C:\Users\Angelo\.nuget\packages\blazorkit.spinners\0.7.16\contentFiles\any\net6.0\wwwroot\spinners.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
@@ -14,10 +26,6 @@
     <PackageReference Include="BlazorKit.Spinners" Version="0.7.16" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.6" />
     <PackageReference Include="MudBlazor" Version="6.0.10" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
